@@ -61,6 +61,8 @@ jobs:
         run: |
           docker run --detach --name sillytavern-smoke \
             --publish 127.0.0.1:18080:8000 \
+            --add-host host.docker.internal:host-gateway \
+            --add-host gateway.docker.internal:host-gateway \
             --env PUID=1000 --env PGID=1000 \
             --env SILLYTAVERN_HEARTBEATINTERVAL=5 \
             "$IMAGE@$IMAGE_DIGEST"
